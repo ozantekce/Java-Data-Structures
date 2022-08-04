@@ -1,59 +1,59 @@
 public class LinkedList<E> {
 
-    private LinkedList.Node first;
-    private LinkedList.Node last;
+    private LinkedList.Node tail;
+    private LinkedList.Node head;
 
     private int size;
 
-    public void addFirst(E data){
-
-        if(first==null){
-            first = new Node(data,null);
-            last = first;
-            size++;
-        }else{
-            first.next = new Node(data,null);
-            first = first.next;
-            size++;
-        }
-
-    }
-
     public void addLast(E data){
 
-        if(last==null){
-            last = new Node(data,null);
-            first = last;
+        if(tail ==null){
+            tail = new Node(data,null);
+            head = tail;
             size++;
         }else{
-            last = new Node(data,last);
+            tail.next = new Node(data,null);
+            tail = tail.next;
             size++;
         }
 
     }
 
-    public E removeFirst(){
+    public void addFirst(E data){
 
-        if(first==null)
-            return null;
-        E rtn = (E)first.data;
-        Node current = last;
-        while (current.next !=first){
-            current = current.next;
+        if(head ==null){
+            head = new Node(data,null);
+            tail = head;
+            size++;
+        }else{
+            head = new Node(data, head);
+            size++;
         }
-        first = current;
-        first.next = null;
-        size--;
-        return rtn;
+
     }
 
     public E removeLast(){
 
-        if(last==null)
+        if(tail ==null)
             return null;
-        E rtn = (E)last.data;
-        Node current = last.next;
-        last = current;
+        E rtn = (E) tail.data;
+        Node current = head;
+        while (current.next != tail){
+            current = current.next;
+        }
+        tail = current;
+        tail.next = null;
+        size--;
+        return rtn;
+    }
+
+    public E removeFirst(){
+
+        if(head ==null)
+            return null;
+        E rtn = (E) head.data;
+        Node current = head.next;
+        head = current;
         size--;
         return rtn;
     }
@@ -61,7 +61,7 @@ public class LinkedList<E> {
 
     public void printer(){
 
-        Node current = last;
+        Node current = head;
         while (current!=null){
             System.out.print(current.data+" ");
             current = current.next;
