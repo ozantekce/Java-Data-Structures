@@ -44,6 +44,30 @@ public class Main {
         System.out.println(arrayStack.pop());
         System.out.println(arrayStack.pop());
 
+
+
+
+        System.out.println("----------------------------------------------------------------");
+        LinkedList<Integer> linkedList = new LinkedList<>();
+
+        linkedList.addFirst(10);
+        linkedList.printer();
+        linkedList.addFirst(20);
+        linkedList.printer();
+        linkedList.addFirst(30);
+        linkedList.printer();
+        linkedList.addLast(40);
+        linkedList.printer();
+        linkedList.addLast(50);
+        linkedList.printer();
+        linkedList.removeFirst();
+        linkedList.printer();
+        linkedList.removeFirst();
+        linkedList.printer();
+        linkedList.removeLast();
+        linkedList.printer();
+        linkedList.removeLast();
+        linkedList.printer();
     }
 
 }
