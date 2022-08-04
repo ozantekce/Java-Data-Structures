@@ -21,7 +21,7 @@ public class LinkedList<E> {
 
     public void addFirst(E data){
 
-        if(head ==null){
+        if(head == null){
             head = new Node(data,null);
             tail = head;
             size++;

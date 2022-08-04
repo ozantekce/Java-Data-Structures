@@ -68,6 +68,38 @@ public class Main {
         linkedList.printer();
         linkedList.removeFirst();
         linkedList.printer();
+
+
+        System.out.println("----------------------------------------------------------------");
+        CircularlyLinkedList<Integer> circularlyLinkedList = new CircularlyLinkedList<>();
+
+        circularlyLinkedList.addLast(10);
+        circularlyLinkedList.printer();
+        circularlyLinkedList.addLast(20);
+        circularlyLinkedList.printer();
+        circularlyLinkedList.addLast(30);
+        circularlyLinkedList.printer();
+        circularlyLinkedList.addFirst(40);
+        circularlyLinkedList.printer();
+        circularlyLinkedList.addFirst(50);
+        circularlyLinkedList.printer();
+        circularlyLinkedList.removeLast();
+        circularlyLinkedList.printer();
+        circularlyLinkedList.removeLast();
+        circularlyLinkedList.printer();
+        circularlyLinkedList.removeFirst();
+        circularlyLinkedList.printer();
+        circularlyLinkedList.removeFirst();
+        circularlyLinkedList.printer();
+        for (int i = 0; i < 10; i++) {
+            circularlyLinkedList.addLast(i);
+        }
+        circularlyLinkedList.printer();
+        circularlyLinkedList.shift();
+        circularlyLinkedList.printer();
+        circularlyLinkedList.shift();
+        circularlyLinkedList.printer();
+
     }
 
 }
