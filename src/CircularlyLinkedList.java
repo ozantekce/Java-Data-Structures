@@ -33,8 +33,6 @@ public class CircularlyLinkedList<E> {
 
     }
 
-
-
     public void removeFirst(){
         if(size==0)return;
         tail.next = head.next;
