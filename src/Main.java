@@ -2,7 +2,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-
+        /*
         Queue<Integer> queue = new Queue<>();
 
         queue.enqueue(10);
@@ -99,7 +99,19 @@ public class Main {
         circularlyLinkedList.printer();
         circularlyLinkedList.shift();
         circularlyLinkedList.printer();
+        */
 
+
+        BinarySearchTree binaryTree = new BinarySearchTree();
+        for (int i = 0; i < 16; i++) {
+            binaryTree.add((int) (Math.random()*16));
+        }
+        binaryTree.printBinaryTree();
+        System.out.println("----------------------------------------------------------------");
+        for (int i = 0; i < 16; i++) {
+            binaryTree.remove(i);
+        }
+        binaryTree.printBinaryTree();
     }
 
 }
