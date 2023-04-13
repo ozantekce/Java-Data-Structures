@@ -54,13 +54,13 @@ public class CircularlyLinkedList<E> {
 
     public E getData(int i){
 
-        Node temp=head;
+        Node<E> temp=head;
 
         for (int j = 0; j < i; j++) {
             temp=temp.next;
         }
 
-        return (E)temp.data;
+        return temp.data;
     }
 
     public int getSize() {
