@@ -1,18 +1,18 @@
 public class CircularlyLinkedList<E> {
 
-    private Node head = null;
-    private Node tail = null;
+    private Node<E> head = null;
+    private Node<E> tail = null;
     private int size=0;
 
     public void addFirst(E data){
-        Node temp = new Node(data, head);
+        Node<E> temp = new Node(data, head);
         if(head==null)tail=temp;
         head=temp;
         size++;
     }
 
     public void addLast(E data){
-        Node temp = new Node(data, head);
+        Node<E> temp = new Node(data, head);
         if(tail==null){
             tail=temp;
             head=tail;
@@ -24,13 +24,23 @@ public class CircularlyLinkedList<E> {
         size++;
     }
 
-    public void shift() {
-
+    public void shiftLeft() {
         if(head!=null){
             head = head.next;
             tail = tail.next;
         }
-
+    }
+    public void shiftRight(){
+        if(head!=null){
+            //head = head.next;
+            //tail = tail.next;
+            Node temp = head;
+            while (temp.next!=tail) {
+                temp = temp.next;
+            }
+            head = tail;
+            tail = temp;
+        }
     }
 
     public void removeFirst(){
@@ -51,8 +61,7 @@ public class CircularlyLinkedList<E> {
         size--;
     }
 
-
-    public E getData(int i){
+    public E get(int i){
 
         Node<E> temp=head;
 
@@ -63,35 +72,49 @@ public class CircularlyLinkedList<E> {
         return temp.data;
     }
 
-    public int getSize() {
+    public int size() {
         return size;
     }
 
+    public boolean isEmpty(){return size==0;}
+
     public E getFirst() {
-        return (E)head.data;
+        return head.data;
     }
 
     public E getLast() {
-        return (E)tail.data;
+        return tail.data;
     }
 
 
-    public void printer(){
+    private StringBuilder stringBuilder = new StringBuilder();
+    @Override
+    public String toString() {
+        stringBuilder.setLength(0);
+
+        if(isEmpty())return "[]";
+        stringBuilder.append("[");
 
         Node current = head;
-        for (int i = 0; i < size; i++) {
-            System.out.print(current.data+" ");
+        stringBuilder.append(head.data);
+        current = current.next;
+        int i =1;
+        while (i<size){
+            stringBuilder.append(", "+current.data);
             current = current.next;
+            i++;
         }
-        System.out.println();
+        stringBuilder.append("]");
+        return  stringBuilder.toString();
     }
+
 
     private static class Node<E> {
 
         private E data;
-        private CircularlyLinkedList.Node next;
+        private Node<E> next;
 
-        public Node(E e, CircularlyLinkedList.Node next) {
+        public Node(E e, Node next) {
             data = e;
             this.next = next;
         }

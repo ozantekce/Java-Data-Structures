@@ -40,9 +40,7 @@ public class ArrayList<E> {
         if(index>=size||index<0)return null;
         E e = array[index];
         int numMoved = size - index - 1;
-        if (numMoved > 0)
-            System.arraycopy(array, index+1, array, index,
-                    numMoved);
+        if (numMoved > 0)System.arraycopy(array, index+1, array, index, numMoved);
         array[--size] = null;
         return e;
     }
@@ -62,38 +60,18 @@ public class ArrayList<E> {
 
     public int size(){return size;}
 
+    private StringBuilder stringBuilder = new StringBuilder();
     @Override
     public String toString() {
-        return  Arrays.toString(array) ;
-    }
-
-    public static void main(String[] args) {
-        ArrayList<Integer> arrayList = new ArrayList<>();
-        arrayList.add(10);
-        arrayList.add(9);
-        System.out.println(Arrays.toString(arrayList.array));
-        System.out.println(arrayList.get(0));
-        arrayList.remove(0);
-        System.out.println(Arrays.toString(arrayList.array));
-        System.out.println(arrayList.get(0));
-        arrayList.remove(0);
-        System.out.println(Arrays.toString(arrayList.array));
-        System.out.println(arrayList.get(0));
-        System.out.println(arrayList.isEmpty());
-        for (int i = 0; i < 20; i++) {
-            arrayList.add(i);
+        stringBuilder.setLength(0);
+        if(isEmpty())return "[]";
+        stringBuilder.append("[");
+        stringBuilder.append(array[0]);
+        for (int i = 1; i < size; i++) {
+            stringBuilder.append(", "+array[i]);
         }
-        arrayList.remove(20);
-        arrayList.remove(19);
-        for (int i = 0; i < arrayList.size(); i++) {
-            System.out.println(arrayList.get(i));
-        }
-        System.out.println(arrayList.contains(30));
-        System.out.println(arrayList.contains(15));
-        arrayList.clear();
-        for (int i = 0; i < arrayList.size(); i++) {
-            System.out.println(arrayList.get(i));
-        }
+        stringBuilder.append("]");
+        return  stringBuilder.toString();
     }
 
 

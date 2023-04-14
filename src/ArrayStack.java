@@ -1,4 +1,4 @@
-public class ArrayStack<E> {
+public class ArrayStack<E> implements IStack<E>{
 
     private final int CAPACITY;
     private E [] data;
@@ -7,7 +7,6 @@ public class ArrayStack<E> {
     public ArrayStack(int capacity){
         this.CAPACITY = capacity;
         data = (E[])new Object[CAPACITY];
-
     }
 
     public int size() {

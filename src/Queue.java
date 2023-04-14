@@ -1,45 +1,47 @@
-public class Queue <E>{
+public class Queue <E> implements IQueue<E> {
 
-    private Node last;
-    private Node first;
+    private Node<E> last;
+    private Node<E> first;
     private int size=0;
 
     public void enqueue(E e){
 
         if(size==0){
-            last= new Node(null,null, e);
+            last = new Node<E>(e);
             first = last;
             size++;
             return;
         }
 
-        Node temp = new Node(null,last, e);
+        Node<E> temp = new Node<E>(e);
         last.prev = temp;
         last = temp;
         size++;
     }
 
     public E dequeue(){
-
-        E e = (E)first.data;
+        if(size==0)throw new RuntimeException("Queue is empty");
+        E e = first.data;
         first = first.prev;
         size--;
         return e;
     }
 
+    public E peek(){if(isEmpty())return null; else return first.data;}
+
+    public int size(){return size;}
+    public boolean isEmpty(){return size==0;}
 
     private static class Node<E>{
-        private Node prev;
-        private Node next;
-        private E data;
+        private Node<E> prev;
+        private final E data;
 
-        public Node(Node prev,Node next, E data) {
-            this.prev = prev;
-            this.next = next;
+        public Node(E data) {
             this.data = data;
         }
 
     }
+
 
 
 }

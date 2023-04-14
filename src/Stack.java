@@ -1,8 +1,7 @@
-public class Stack<E> {
+public class Stack<E> implements IStack<E> {
 
-    private Node top;
+    private Node<E> top;
     private int size;
-
 
     public int size() {
         return size;
@@ -11,7 +10,6 @@ public class Stack<E> {
     public boolean isEmpty(){
         return top==null;
     }
-
 
     public void push(E e){
         if(isEmpty()){
@@ -27,27 +25,26 @@ public class Stack<E> {
 
     public E top(){
         if(isEmpty())return null;
-        return (E)top.getData();
+        return top.getData();
     }
 
     public E pop(){
         if(isEmpty()){
             return null;
         }
-        Node temp = top;
+        Node<E> temp = top;
         top = top.next;
         size--;
-        return (E)temp.getData();
-
+        return temp.getData();
     }
 
 
     private static class Node<E>{
 
-        private Node next;
+        private Node<E> next;
         private E data;
 
-        public Node(Node next, E data) {
+        public Node(Node<E> next, E data) {
             this.next = next;
             this.data = data;
         }
@@ -56,7 +53,7 @@ public class Stack<E> {
             this.data = data;
         }
 
-        public void setNext(Node next) {
+        public void setNext(Node<E> next) {
             this.next = next;
         }
 
@@ -64,7 +61,7 @@ public class Stack<E> {
             return data;
         }
 
-        public Node getNext() {
+        public Node<E> getNext() {
             return next;
         }
 

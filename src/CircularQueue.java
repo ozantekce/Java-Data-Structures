@@ -1,7 +1,7 @@
-public class CircularQueue<E> {
+public class CircularQueue<E> implements IQueue<E>{
 
-    private Node head;
-    private Node tail;
+    private Node<E> head;
+    private Node<E> tail;
     private int size;
 
     public void enqueue(E e) {
@@ -44,17 +44,30 @@ public class CircularQueue<E> {
 
     }
 
-    public void printer(){
+
+    private StringBuilder stringBuilder = new StringBuilder();
+    @Override
+    public String toString() {
+        stringBuilder.setLength(0);
+
+        if(isEmpty())return "[]";
+        stringBuilder.append("[");
 
         Node current = head;
-        for (int i = 0; i < size; i++) {
-            System.out.print(current.data+" ");
+        stringBuilder.append(head.data);
+        current = current.next;
+        int i = 1;
+        while (i<size){
+            stringBuilder.append(", "+current.data);
             current = current.next;
+            i++;
         }
-        System.out.println();
+        stringBuilder.append("]");
+        return  stringBuilder.toString();
     }
 
-    public int getSize(){
+
+    public int size(){
         return size;
     }
 
@@ -65,7 +78,7 @@ public class CircularQueue<E> {
     private static class Node<E> {
 
         private E data;
-        private Node next;
+        private Node<E> next;
 
         public Node(E e, Node next) {
             data = e;
